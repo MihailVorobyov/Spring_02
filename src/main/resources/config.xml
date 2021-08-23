@@ -10,29 +10,16 @@
     <bean id="patient" class="ru.vorobyov.Patient" >
         <property name="firstName" value="Василий" />
         <property name="lastName" value="Петров" />
-        <property name="neededDoctor" ref="therapist" />
-        <property name="reception" ref="reception" />
+        <property name="neededDoctor" ref="dentist" />
     </bean>
 
-    <bean id="medicalCard" class="ru.vorobyov.MedicalCard" scope="prototype">
-        <constructor-arg name="patient" ref="patient" />
-        <property name="firstName" />
-        <property name="lastName" />
-    </bean>
-    <bean id="archive" class="ru.vorobyov.Archive" >
-        <constructor-arg name="medicalCard">
-            <ref bean="medicalCard"/>
-        </constructor-arg>
-    </bean>
+    <bean id="archive" class="ru.vorobyov.Archive" />
+
     <bean id="planOfClinic" class="ru.vorobyov.PlanOfClinic" />
 
     <bean id="reception" class="ru.vorobyov.Reception" >
-        <constructor-arg name="patient" ref="patient" />
         <property name="patient" ref="patient" />
         <property name="archive" ref="archive" />
         <property name="planOfClinic" ref="planOfClinic" />
-<!--        <property name="doctor">-->
-<!--            <ref bean="doctor" />-->
-<!--        </property>-->
     </bean>
 </beans>

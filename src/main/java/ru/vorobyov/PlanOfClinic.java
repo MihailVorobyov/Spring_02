@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class PlanOfClinic {
 	
-	Map<Doctor, Integer> roomsTable = new HashMap();
+	Map<Doctor, Integer> roomsTable = new HashMap<>();
 	
 	public PlanOfClinic() {
 		this.roomsTable.put(new Therapist(), 1);
@@ -14,6 +14,6 @@ public class PlanOfClinic {
 	
 	public int getRoomNumber(Doctor doctor) {
 		System.out.println("Поиск номера комнаты...");
-		return roomsTable.getOrDefault(doctor, 0);
+		return roomsTable.getOrDefault(doctor, -1);
 	}
 }

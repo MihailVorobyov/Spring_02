@@ -7,30 +7,24 @@ public class Reception {
 	private MedicalCard medicalCard;
 	private PlanOfClinic planOfClinic;
 	
-	public void setArchive() {
-		this.archive = new Archive();
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+	
+	public void setArchive(Archive archive) {
+		this.archive = archive;
 	}
 	
 	public void setMedicalCard() {
-		this.medicalCard = Archive.getMedicalCard(patient);;
+		this.medicalCard = archive.getMedicalCard(patient);
 	}
 	
-	public void setPlanOfClinic() {
-		this.planOfClinic = new PlanOfClinic();
-	}
-	
-	public Reception(Patient patient, Archive archive, PlanOfClinic planOfClinic) {
-		this.patient = patient;
-		this.archive = archive;
+	public void setPlanOfClinic(PlanOfClinic planOfClinic) {
 		this.planOfClinic = planOfClinic;
 	}
-	
+
 	public int getRoomNumber(Patient patient) {
-//		this.patient = patient;
 		System.out.println("Пациент пришёл");
-//		medicalCard = Archive.getMedicalCard(patient);
-//		planOfClinic = new PlanOfClinic();
-		
 		return planOfClinic.getRoomNumber(patient.getNeededDoctor());
 	}
 }

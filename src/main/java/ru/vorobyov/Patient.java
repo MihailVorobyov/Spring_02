@@ -3,23 +3,12 @@ package ru.vorobyov;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class Patient {
 	
-	private final String firstName;
-	private final String lastName;
+	private String firstName;
+	private String lastName;
 	private Doctor neededDoctor;
-	private Reception reception;
-	
-	public Patient(String firstName, String lastName, Doctor neededDoctor, Reception reception) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.neededDoctor = neededDoctor;
-		this.reception = reception;
-	}
-	
+
 	public void goToDoctor(int roomNumber) {
 		neededDoctor.heal();
 	}
@@ -40,18 +29,20 @@ public class Patient {
 		this.neededDoctor = neededDoctor;
 	}
 	
-	public void setReception(Reception reception) {
-		this.reception = reception;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-//		Patient patient = new Patient("Василий", "Петров", new Dentist());
-//		Reception reception = new Reception();
-//		int roomNumber = reception.getRoomNumber(patient);
-//		patient.goToDoctor(roomNumber);
+
 		Patient patient = context.getBean("patient", Patient.class);
 		Reception reception = context.getBean("reception", Reception.class);
-		patient.goToDoctor(reception.getRoomNumber(patient));
+		int roomNumber = reception.getRoomNumber(patient);
+		patient.goToDoctor(roomNumber);
 	}
 }
