@@ -1,8 +1,11 @@
 package ru.vorobyov;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class PlanOfClinic {
 	
 	Map<Doctor, Integer> roomsTable = new HashMap<>();

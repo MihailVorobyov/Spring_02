@@ -1,5 +1,8 @@
 package ru.vorobyov;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Reception {
 	
 	Patient patient;

@@ -1,8 +1,12 @@
 package ru.vorobyov;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Patient {
 	
 	private String firstName;
@@ -38,8 +42,8 @@ public class Patient {
 	}
 	
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-
+//		ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		Patient patient = context.getBean("patient", Patient.class);
 		Reception reception = context.getBean("reception", Reception.class);
 		int roomNumber = reception.getRoomNumber(patient);

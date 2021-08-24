@@ -1,5 +1,8 @@
 package ru.vorobyov;
 
+import org.springframework.stereotype.Component;
+
+@Component("archive")
 public class Archive {
 	
 	public MedicalCard getMedicalCard(Patient patient) {
